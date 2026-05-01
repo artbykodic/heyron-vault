@@ -116,7 +116,18 @@ Cron Job 2 - Hourly backup checkpoint:
 Name: Memory Save
 Schedule: Every 1 hour
 Session: Isolated
-Prompt: (see VAULT.md for Memory Save prompt)
+Prompt:
+Read your memory and find any active job. Save your
+current known status to memory RIGHT NOW using this
+exact format:
+ACTIVE JOB: [task] | Brand: [brand] | Progress: [X/total]
+| Last filename: [last filename] | Next step: [next step]
+| Timestamp: [current time]
+If there is no active job save:
+NO ACTIVE JOB - Last checkpoint: [current time]
+Save to memory. After saving run:
+git add -A && git commit -m 'hourly checkpoint [time]' && git push
+Then stop. Do nothing else. Background checkpoint only.
 ```
 
 **Step 6** (recommended) - Set up GitHub auto-push:
