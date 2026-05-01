@@ -114,14 +114,19 @@ Do this automatically. Do not wait for prompting.
 
 MEMORY SAVE PROMPT (hourly backup):
 ---
-Read your memory and find any active job.
-Save your current known status to memory RIGHT NOW using
-this exact format:
-ACTIVE JOB: [task] | Progress: [X/total] |
-Last checkpoint: [description] | Timestamp: [time]
+Read your memory and find any active job. Save your
+current known status to memory RIGHT NOW using this
+exact format:
+ACTIVE JOB: [book title] | Brand: [kodi or honeybadger]
+| Approved: [X]/30 | Last filename: [last filename saved
+in memory] | Next step: [next step from memory]
+| Timestamp: [current time]
 If there is no active job save:
-NO ACTIVE JOB - Last checkpoint: [time]
-Save to memory and do nothing else.
+NO ACTIVE JOB - Last checkpoint: [current time]
+Save to memory. After saving run:
+git add -A && git commit -m 'hourly checkpoint [time]' && git push
+Then stop. Do nothing else. Do not generate images.
+Do not start new tasks. Background checkpoint only.
 ---
 
 ==========================================================
