@@ -56,13 +56,37 @@ Vault has 5 layers:
   AUTO-BOOT SYSTEM
 ==========================================================
 
-A cron job fires every 24 hours to boot Vault.
+Two cron jobs keep Vault running automatically.
 
-CRON JOB SETTINGS:
+CRON JOB 1 - VAULT BOOT (daily wake-up):
   Name     : Vault Boot
   Every    : 24 hours
   Session  : Isolated
   Enable   : at the exact time you want it to fire daily
+  Purpose  : Morning status report and task resumption
+
+CRON JOB 2 - MEMORY SAVE (hourly backup):
+  Name     : Memory Save
+  Every    : 1 hour
+  Session  : Isolated
+  Purpose  : Backup checkpoint in case agent saves fail
+
+MEMORY SAVE PROMPT:
+---
+Read your memory and find any active job. Save your
+current known status to memory RIGHT NOW using this
+exact format:
+ACTIVE JOB: [book title] | Brand: [kodi or honeybadger]
+| Approved: [X]/30 | Last filename: [last filename saved
+in memory] | Next step: [next step from memory]
+| Timestamp: [current time]
+If there is no active job save:
+NO ACTIVE JOB - Last checkpoint: [current time]
+Save to memory. After saving run:
+git add -A && git commit -m 'hourly checkpoint [time]' && git push
+Then stop. Do nothing else. Do not generate images.
+Do not start new tasks. Background checkpoint only.
+---
 
 CRON BOOT PROMPT:
 ---
